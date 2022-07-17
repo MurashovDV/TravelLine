@@ -1,0 +1,1606 @@
+{
+	"info": {
+		"_postman_id": "77d3c618-cb66-42bf-aad0-1297746cf45d",
+		"name": "TravelLine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21311762"
+	},
+	"item": [
+		{
+			"name": "Создание брони",
+			"item": [
+				{
+					"name": "Корректный запрос",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Корректный запрос",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"number\", jsonData.booking.number);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Протокол http",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Протокол http",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "http",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Неккоректный эндпоинт",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Неккоректный эндпоинт",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/booking",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"booking"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Версия v2",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Версия v2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v2/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v2",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Версия v3",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Версия v3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v3/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v3",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Статус 200",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Статус 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Отправка методом GET",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка методом GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Отправка методом PUT",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка методом PUT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Отправка методом DELETE",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка методом DELETE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Отправка без apikey",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка без apikey",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//pm.collectionVariables.set('ApiKey', '47306034-78fc-4767-bfd9-25e78825b985');"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//pm.environment.headers.unset(KEY: 'X-API-KEY');"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Невалидный apikey",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка с невалидным apikey",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set('ApiKey', '47306034-78fc-4767-bfd9-25e78825b985');"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set('ApiKey', 'fdce0674-ce4e-4342-a45d-64fb11498a3e');\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Время ответа (1000мс)",
+					"item": [
+						{
+							"name": "NewToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"//var temp = jsonData.alternativeBooking.createBookingToken;\r",
+											"pm.collectionVariables.set(\"Token\", jsonData.alternativeBooking.createBookingToken);\r",
+											"\r",
+											"\r",
+											"console.log(jsonData);\r",
+											"console.log(jsonData.Token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"f2802d34aa718bac1a44a4ecb125cf8d9d7a9eb0509e242fc50ac191c29b31ee\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/verify",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Проверка времени ответа (1000мс)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is less than 1000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-KEY",
+										"value": "{{ApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"7291\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2022-10-01T14:00\",\r\n          \"departureDateTime\": \"2022-10-14T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"307225\"\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"340936\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\"\r\n            }\r\n          ]\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \r\n        \"checksum\": \"946D3F9E5BC10C972126E0E09065B5C6FF05E4B3\"\r\n      }\r\n    ],\r\n    \r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createBookingToken\": \"{{Token}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://partner.qatl.ru/api/reservation/v1/bookings",
+									"protocol": "https",
+									"host": [
+										"partner",
+										"qatl",
+										"ru"
+									],
+									"path": [
+										"api",
+										"reservation",
+										"v1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Посмотреть информацию о брони",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/{{number}}",
+					"protocol": "https",
+					"host": [
+						"partner",
+						"qatl",
+						"ru"
+					],
+					"path": [
+						"api",
+						"reservation",
+						"v1",
+						"bookings",
+						"{{number}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отмена брони",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"time\", jsonData.booking.createdDateTime);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"booking\": {\r\n    \"propertyId\": \"1024\",\r\n    \"roomStays\": [\r\n      {\r\n        \"stayDates\": {\r\n          \"arrivalDateTime\": \"2019-10-01T14:00\",\r\n          \"departureDateTime\": \"2019-10-02T12:00\"\r\n        },\r\n        \"ratePlan\": {\r\n          \"id\": \"133528\",\r\n          \"name\": \"Онлайн бронирование\",\r\n          \"description\": \"Самые лучшие цены, тут\",\r\n          \"vat\": {\r\n            \"applicable\": true,\r\n            \"included\": true,\r\n            \"percent\": 20\r\n          }\r\n        },\r\n        \"roomType\": {\r\n          \"id\": \"82751\",\r\n          \"placements\": [\r\n            {\r\n              \"code\": \"AdultBed-2\",\r\n              \"count\": 2,\r\n              \"kind\": \"Adult\",\r\n              \"minAge\": null,\r\n              \"maxAge\": null\r\n            }\r\n          ],\r\n          \"name\": \"Стандартный\"\r\n        },\r\n        \"guests\": [\r\n          {\r\n            \"firstName\": \"Иван\",\r\n            \"lastName\": \"Иванов\",\r\n            \"middleName\": \"Иванович\",\r\n            \"citizenship\": \"RUS\",\r\n            \"sex\": \"Male\"\r\n          }\r\n        ],\r\n        \"guestCount\": {\r\n          \"adultCount\": 1,\r\n          \"childAges\": [\r\n            5\r\n          ]\r\n        },\r\n        \"checksum\": \"string\",\r\n        \"dailyRates\": [\r\n          {\r\n            \"priceBeforeTax\": 9500,\r\n            \"date\": \"2019-10-01\"\r\n          }\r\n        ],\r\n        \"total\": {\r\n          \"priceBeforeTax\": 9500,\r\n          \"taxAmount\": 100,\r\n          \"taxes\": [\r\n            {\r\n              \"amount\": 100,\r\n              \"index\": 1\r\n            }\r\n          ]\r\n        },\r\n        \"services\": [\r\n          {\r\n            \"id\": \"42965\",\r\n            \"name\": \"Завтрак\",\r\n            \"description\": \"Завтрак в ресторане по специальной цене\",\r\n            \"totalPrice\": 1200,\r\n            \"inclusive\": false,\r\n            \"kind\": \"Meal\",\r\n            \"mealPlanCode\": \"AllInclusive\",\r\n            \"mealPlanName\": \"Все включено\",\r\n            \"vat\": {\r\n              \"applicable\": true,\r\n              \"included\": true,\r\n              \"percent\": 20\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"services\": [\r\n      {\r\n        \"id\": \"7898\",\r\n        \"name\": \"Фруктовая тарелка\",\r\n        \"description\": \"Тарелка фруктов к заезду\",\r\n        \"price\": 200\r\n      }\r\n    ],\r\n    \"customer\": {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\",\r\n      \"middleName\": \"Иванович\",\r\n      \"citizenship\": \"RUS\",\r\n      \"contacts\": {\r\n        \"phones\": [\r\n          {\r\n            \"phoneNumber\": \"+79020000000\"\r\n          }\r\n        ],\r\n        \"emails\": [\r\n          {\r\n            \"emailAddress\": \"test@travelline.ru\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"total\": {\r\n      \"priceBeforeTax\": 9500,\r\n      \"taxAmount\": 100,\r\n      \"taxes\": [\r\n        {\r\n          \"amount\": 100,\r\n          \"index\": 1\r\n        }\r\n      ]\r\n    },\r\n    \"taxes\": [\r\n      {\r\n        \"index\": 1,\r\n        \"name\": \"Курортный сбор\",\r\n        \"description\": \"Сбор с каждого гостя, оплата на ресепшен\"\r\n      }\r\n    ],\r\n    \"currencyCode\": \"RUB\",\r\n    \"cancellation\": {\r\n      \"penaltyAmount\": 1200,\r\n      \"reason\": \"Отмена поездки\",\r\n      \"cancelledUtc\": \"2019-06-20T10:41:04Z\"\r\n    },\r\n    \"cancellationPolicy\": {\r\n      \"freeCancellationPossible\": true,\r\n      \"freeCancellationDeadlineLocal\": \"2019-09-30T12:00\",\r\n      \"freeCancellationDeadlineUtc\": \"2019-09-30T09:00Z\",\r\n      \"penaltyAmount\": 1200\r\n    },\r\n    \"number\": \"20191001-1024-45675262\",\r\n    \"status\": \"Confirmed\",\r\n    \"createdDateTime\": \"2019-06-20T10:41:04Z\",\r\n    \"modifiedDateTime\": \"2019-06-20T11:41:04Z\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/{{number}}/cancel",
+					"protocol": "https",
+					"host": [
+						"partner",
+						"qatl",
+						"ru"
+					],
+					"path": [
+						"api",
+						"reservation",
+						"v1",
+						"bookings",
+						"{{number}}",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Сумма штрафа за отмену",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://partner.qatl.ru/api/reservation/v1/bookings/{{number}}/calculate-cancellation-penalty?cancellationDateTimeUtc={{time}}",
+					"protocol": "https",
+					"host": [
+						"partner",
+						"qatl",
+						"ru"
+					],
+					"path": [
+						"api",
+						"reservation",
+						"v1",
+						"bookings",
+						"{{number}}",
+						"calculate-cancellation-penalty"
+					],
+					"query": [
+						{
+							"key": "cancellationDateTimeUtc",
+							"value": "{{time}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ApiKey",
+			"value": ""
+		},
+		{
+			"key": "number",
+			"value": ""
+		},
+		{
+			"key": "time",
+			"value": ""
+		}
+	]
+}
